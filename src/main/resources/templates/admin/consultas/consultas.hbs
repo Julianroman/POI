@@ -1,0 +1,51 @@
+{{#partial "contenido"}}
+<h3>Historico de Consultas</h3>
+
+    <form action="/admin/busquedas" method="POST">
+        <label for="fechaDesde">Fecha desde </label>
+        &nbsp;
+        <input type="date" name="fechaDesde">
+        &nbsp;
+        <label for="fechaHasta">Fecha hasta </label>
+        &nbsp;
+        <input type="date" name="fechaHasta">
+        &nbsp;
+        <label for="cantidadDePOIs">Cantidad de POIs </label>
+        &nbsp;
+        <input type="text" name="cantidadDePOIs" placeholder="Cantidad">
+        &nbsp;
+        <label for="terminal">Terminal </label>
+        &nbsp;
+        <input type="text" name="terminal" placeholder="Terminal">
+        &nbsp;
+        <input type="submit" name="buscar" value="Buscar">
+        <input type="submit" name="deshacer" value = "Deshacer filtro">
+    </form>
+    &nbsp;
+    &nbsp;
+    <table class="table table-stripped">
+        <tr>
+            <th>Fecha</th>
+            <th>Frase buscada</th>
+            <th>Terminal</th>
+            <th>Tiempo estimado de busqueda</th>
+            <th>Duracion busqueda</th>
+            <th>Cantidad de resultados</th>
+            <th></th>
+        </tr>
+        {{#each resultadosBusquedas}}
+        <tr>
+            <td>{{momentoDeBusquedaString}}</td>
+            <td>{{fraseBuscada}}</td>
+            <td>{{nombreTerminal}}</td>
+            <td>{{tiempoEstimadoBusqueda}} ms</td>
+            <td>{{duracionBusqueda}} ms</td>
+            <td>{{cantidadDeResultados}} pois</td>
+            <td><a href="/admin/busquedas/{{url}}">Ver Consulta</a><td>
+          </tr>
+        {{/each}}
+    </table>
+<a href="/admin"><button>Volver</button></a>
+
+{{/partial}}
+{{>layout.hbs}}

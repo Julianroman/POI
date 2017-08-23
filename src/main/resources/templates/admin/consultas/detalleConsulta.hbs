@@ -1,0 +1,25 @@
+{{#partial "contenido"}}
+    {{#with busqueda}}
+        <h1>Detalle Busqueda</h1>
+
+		<h4>Puntos de interes encontrados</h4>
+        <table class="table table-stripped">
+            <tr>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Comuna</th>
+            </tr>
+            {{#each resultadosBusqueda}}
+            <tr>
+                <td>{{nombre}}</td>
+                <td>{{direccion}}</td>
+                <td>{{comuna}}</td>
+              </tr>
+            {{/each}}
+        </table>
+
+    {{/with}}
+    <a href="/admin/busquedas"><button>Volver</button></a>
+{{/partial}}
+
+{{>layout.hbs}}
